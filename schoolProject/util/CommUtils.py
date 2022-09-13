@@ -54,3 +54,14 @@ def doDetectObject(face, center):
 
 def roi(pt, size):
     return np.ravel([pt, size]).astype(int)
+
+def draw_ellipse(image, roi, color, thickness=cv2.FILLED):
+    x, y, w, h = roi
+
+    center = (x+w//2, y+h//2)
+
+    size = (int(w*0.45), int(h*0.45))
+
+    cv2.ellipse(image, center, size, 0, 0, 360, color, thickness)
+
+    return image
